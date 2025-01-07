@@ -1,4 +1,5 @@
 /*堀
+nxt-rvs-tag:2
 ######################################################################
 File: "layout.tsx".
 On nepi40 : (*home-common="/cygdrive/g/home2/"):
@@ -11,6 +12,16 @@ On (2024 Dec 31).
 */
 import '@/app/ui/global.css';
 import { inter } from '@/app/ui/fonts';
+import { Metadata } from 'next';//New1
+//**********************************************************************
+export const metadata: Metadata = {
+  title: {
+    template: '%s | Acme Dashboard',
+    default: 'Acme Dashboard',
+  },
+  description: 'The official Next.js Course Dashboard, built with App Router.',
+  metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
+};
 //**********************************************************************
 export default function RootLayout(
   {children,}: {children: React.ReactNode;}

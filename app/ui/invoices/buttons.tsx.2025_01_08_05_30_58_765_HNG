@@ -1,5 +1,5 @@
 /*堀
-nxt-rvs-tag:4
+nxt-rvs-tag:3
 ######################################################################
 File: "buttons.tsx".
 On nepi40 : (*home-common="/cygdrive/g/home2/"):
@@ -13,7 +13,6 @@ On (2025 Jan 6).
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { deleteInvoice } from '@/app/lib/actions';//New
-import { deleteInvoice1 } from '@/app/lib/actions';//New3
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 export function CreateInvoice(){
   const cn1 = "flex h-10 items-center rounded-lg "+
@@ -46,27 +45,14 @@ export function UpdateInvoice({ id }: { id: string }){
   );
 }
 //**********************************************************************
-//**********************************************************************
 export function DeleteInvoice({ id }: { id: string }){
-  const deleteInvoiceWithId = deleteInvoice.bind(null, id);//New
+  async function deleteInvoiceWithId(){
+    await deleteInvoice(id);
+  }//New2
   const cn1 = "rounded-md border p-2 hover:bg-gray-100";//New2
   //======================================================================
   return (
     <form action={deleteInvoiceWithId}>
-      <button type="submit" className={cn1}>
-        <span className="sr-only">Delete</span>
-        <TrashIcon className="w-4" />
-      </button>
-    </form>
-  );
-}
-//**********************************************************************
-export function DeleteInvoice1({ id }: { id: string }){//New3
-  const cn1 = "rounded-md border p-2 hover:bg-gray-100";//New2
-  //======================================================================
-  return (
-    <form action={deleteInvoice1}>
-      <input type='hidden' name='id' value={id} />
       <button type="submit" className={cn1}>
         <span className="sr-only">Delete</span>
         <TrashIcon className="w-4" />
